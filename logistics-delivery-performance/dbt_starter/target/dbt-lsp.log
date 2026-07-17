@@ -1,0 +1,40 @@
+==================== 2026-07-17T17:06:33.948123Z | 00000000-0000-0000-0000-000000000000 ====================
+==================== 2026-07-17T17:06:33.951759Z | c3d8bcc4-58d6-425f-9d85-1b02ff5f566f ====================
+17:06:33.952082 [info ]: Starting dbt LSP server
+17:06:33.952434 [info ]: Connecting to LSP client on port 8000
+17:06:33.952842 [info ]: Successfully connected to LSP client
+17:06:33.952873 [info ]: Creating LSP service...
+17:06:34.015230 [info ]: Creating LSP server...
+17:06:34.015253 [info ]: Starting LSP server...
+17:06:34.048046 [info ]: Loading ~/.dbt/profiles.yml
+17:07:45.567870 [info ]: Loading ~/.dbt/profiles.yml
+17:10:05.577312 [info ]: Loading ~/.dbt/profiles.yml
+17:10:08.059886 [info ]: Loading ~/.dbt/profiles.yml
+17:10:34.997261 [info ]: Loading ~/.dbt/profiles.yml
+17:11:22.948822 [info ]: Loading ~/.dbt/profiles.yml
+18:21:34.088356 [info ]: Loading ~/.dbt/profiles.yml
+18:21:59.651315 [info ]: Loading ~/.dbt/profiles.yml
+18:22:21.607240 [info ]: Loading ~/.dbt/profiles.yml
+18:23:02.365979 [info ]: Loading ~/.dbt/profiles.yml
+18:24:53.104743 [info ]: Loading ~/.dbt/profiles.yml
+==================== 2026-07-17T18:32:39.149274Z | 00000000-0000-0000-0000-000000000000 ====================
+==================== 2026-07-17T18:32:39.150189Z | 5c788034-69e1-4876-8002-2ab331585554 ====================
+18:32:39.150515 [info ]: Starting dbt LSP server
+18:32:39.150535 [info ]: Connecting to LSP client on port 8000
+18:32:39.153070 [info ]: Successfully connected to LSP client
+18:32:39.153111 [info ]: Creating LSP service...
+18:32:39.228799 [info ]: Creating LSP server...
+18:32:39.228827 [info ]: Starting LSP server...
+18:32:39.260836 [info ]: Loading ~/.dbt/profiles.yml
+18:33:05.255759 [info ]: Loading ~/.dbt/profiles.yml
+==================== 2026-07-17T18:34:50.225235Z | 00000000-0000-0000-0000-000000000000 ====================
+==================== 2026-07-17T18:34:50.228935Z | 6e0f97b2-22dd-4f70-8b1f-3efd79e66317 ====================
+18:34:50.229239 [info ]: Starting dbt LSP server
+18:34:50.229650 [info ]: Connecting to LSP client on port 8000
+18:34:50.230319 [info ]: Successfully connected to LSP client
+18:34:50.230355 [info ]: Creating LSP service...
+18:34:50.331210 [info ]: Creating LSP server...
+18:34:50.331239 [info ]: Starting LSP server...
+18:34:50.379661 [info ]: Loading ~/.dbt/profiles.yml
+18:37:03.230820 [info ]: Loading ~/.dbt/profiles.yml
+18:37:21.011943 [info ]: Loading ~/.dbt/profiles.yml

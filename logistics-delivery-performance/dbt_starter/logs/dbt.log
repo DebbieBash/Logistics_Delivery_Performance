@@ -1,0 +1,105 @@
+==================== 2026-07-17T17:05:13.852758Z | 019f710a-146d-72a2-86ed-e5058967b021 ====================
+17:05:13.855901 [info ]: dbt-fusion 2.0.0-preview.196
+17:05:13.858764 [info ]: Started loading project
+17:05:13.877646 [info ]: Finished loading project [  0.02s]
+17:05:13.879142 [error]: [InvalidConfig (dbt1005)]: no profiles.yml found (searched: ["/Users/debbiebashorun/AE/analytics-engineering-fellowship/case-studies/07-logistics-delivery-performance/dbt_starter/profiles.yml", "/Users/debbiebashorun/.dbt/profiles.yml"]). Run `dbt init` to create one
+17:05:14.043000 [info ]: 
+==================== Execution Summary =====================
+Finished 'debug' with 1 error [190ms]
+==================== 2026-07-17T17:10:04.964046Z | 019f710e-859f-7293-bafe-29e804835fd2 ====================
+17:10:04.964278 [info ]: dbt-fusion 2.0.0-preview.196
+17:10:04.965566 [info ]: Started loading project
+17:10:04.975292 [info ]: Loading ~/.dbt/profiles.yml
+17:10:04.986830 [info ]: Finished loading project [  0.02s]
+17:10:04.988155 [info ]: Started debugging
+17:10:04.988598 [info ]: Debugging profile: dev
+17:10:04.988628 [info ]: Debugging dbt version: 2.0.0-preview.196
+17:10:04.988639 [info ]: Debugging platform: macos aarch64 (unix)
+17:10:04.989031 [info ]: Debugging adapter type: snowflake (remote)
+17:10:05.021831 [info ]: Debugging dependencies:
+  git: OK
+17:10:05.024119 [info ]: Debugging connection:
+  "account": "POTDCEX-WD99015",
+  "user": "DEBBASH",
+  "database": "HAULPOINT",
+  "warehouse": "COMPUTE_WH",
+  "schema": "dev",
+  "role": "SYSADMIN"
+17:10:07.144302 [debug]: Query executed on node unknown:
+select 1 as id
+17:10:07.145972 [info ]: Debugging connection test: OK
+17:10:07.146248 [info ]: Debugged All checks passed!
+17:10:07.146440 [info ]: Finished debugging [  2.16s]
+17:10:07.682974 [info ]: New version available 2.0.0-preview.200 (run `dbt system update`)
+17:10:07.711908 [info ]: 
+==================== Execution Summary =====================
+Finished 'debug' successfully for target 'dev' [2.7s]
+==================== 2026-07-17T17:10:34.357636Z | 019f710e-f873-7031-a967-8e0751531312 ====================
+17:10:34.357721 [info ]: dbt-fusion 2.0.0-preview.196
+17:10:34.357825 [info ]: Started loading project
+17:10:34.358415 [info ]: Loading ~/.dbt/profiles.yml
+17:10:34.517568 [debug]:    Started loading packages
+17:10:34.526139 [debug]:     Loaded [  0.01s] packages
+17:10:34.530042 [info ]: Finished loading project [  0.17s]
+17:10:34.531351 [info ]: Started parsing
+17:10:34.569045 [debug]: Finished parsing models/staging/sources.yml [  0.01s]
+17:10:34.573495 [error]: [UnusedConfigKey (dbt1060)]: Ignored unexpected key `"loaded_at_field"`. YAML path: `loaded_at_field`.
+  --> models/staging/sources.yml:29:9
+17:10:34.574065 [error]: [UnusedConfigKey (dbt1060)]: Ignored unexpected key `"freshness"`. YAML path: `freshness`.
+  --> models/staging/sources.yml:30:9
+17:10:34.575571 [error]: [UnusedConfigKey (dbt1060)]: Ignored unexpected key `"loaded_at_field"`. YAML path: `loaded_at_field`.
+  --> models/staging/sources.yml:45:9
+17:10:34.575680 [error]: [UnusedConfigKey (dbt1060)]: Ignored unexpected key `"loaded_at_field"`. YAML path: `loaded_at_field`.
+  --> models/staging/sources.yml:18:9
+17:10:34.575751 [error]: [UnusedConfigKey (dbt1060)]: Ignored unexpected key `"freshness"`. YAML path: `freshness`.
+  --> models/staging/sources.yml:19:9
+17:10:34.575858 [error]: [UnusedConfigKey (dbt1060)]: Ignored unexpected key `"loaded_at_field"`. YAML path: `loaded_at_field`.
+  --> models/staging/sources.yml:41:9
+17:10:34.578682 [warn ]: [UnusedResourceConfigPath (dbt1097)]: Configuration paths exist in your dbt_project.yml file which do not apply to any resources.
+There are 3 unused configuration paths:
+- models.haulpoint.intermediate
+- models.haulpoint.marts
+- models.haulpoint.staging
+17:10:34.580036 [info ]: Finished parsing [  0.05s]
+17:10:35.028494 [info ]: New version available 2.0.0-preview.200 (run `dbt system update`)
+17:10:35.059012 [info ]: suggestion: Run 'dbt deps' to see the latest fusion compatible packages. For compatibility errors, try the autofix script: https://github.com/dbt-labs/dbt-autofix
+17:10:35.059012 [info ]: 
+==================== Execution Summary =====================
+Finished 'build' with 1 warning and 6 errors for target 'dev' [701ms]
+==================== 2026-07-17T17:11:22.553406Z | 019f710f-b4b7-74a1-a950-cbc902610ed3 ====================
+17:11:22.553471 [info ]: dbt-fusion 2.0.0-preview.196
+17:11:22.845652 [info ]: 
+==================== Execution Summary =====================
+Finished 'deps' successfully [292ms]
+==================== 2026-07-17T18:23:01.971338Z | 019f7151-4f4a-7023-8a42-324079f8755a ====================
+18:23:01.972625 [info ]: dbt-fusion 2.0.0-preview.196
+18:23:01.973760 [info ]: Started loading project
+18:23:01.984519 [info ]: Loading ~/.dbt/profiles.yml
+18:23:02.180302 [debug]:    Started loading packages
+18:23:02.188803 [debug]:     Loaded [  0.01s] packages
+18:23:02.193375 [info ]: Finished loading project [  0.22s]
+18:23:02.197131 [info ]: Started parsing
+18:23:02.238737 [debug]: Finished parsing models/staging/sources.yml [  0.01s]
+18:23:02.242500 [error]: [UnusedConfigKey (dbt1060)]: Ignored unexpected key `"loaded_at_field"`. YAML path: `loaded_at_field`.
+  --> models/staging/sources.yml:29:9
+18:23:02.243246 [error]: [UnusedConfigKey (dbt1060)]: Ignored unexpected key `"freshness"`. YAML path: `freshness`.
+  --> models/staging/sources.yml:30:9
+18:23:02.245567 [error]: [UnusedConfigKey (dbt1060)]: Ignored unexpected key `"loaded_at_field"`. YAML path: `loaded_at_field`.
+  --> models/staging/sources.yml:45:9
+18:23:02.245726 [error]: [UnusedConfigKey (dbt1060)]: Ignored unexpected key `"loaded_at_field"`. YAML path: `loaded_at_field`.
+  --> models/staging/sources.yml:18:9
+18:23:02.245800 [error]: [UnusedConfigKey (dbt1060)]: Ignored unexpected key `"freshness"`. YAML path: `freshness`.
+  --> models/staging/sources.yml:19:9
+18:23:02.246287 [error]: [UnusedConfigKey (dbt1060)]: Ignored unexpected key `"loaded_at_field"`. YAML path: `loaded_at_field`.
+  --> models/staging/sources.yml:41:9
+18:23:02.253458 [debug]: Finished parsing models/staging/stg_orders.sql [  0.01s]
+18:23:02.259945 [warn ]: [UnusedResourceConfigPath (dbt1097)]: Configuration paths exist in your dbt_project.yml file which do not apply to any resources.
+There are 2 unused configuration paths:
+- models.haulpoint.intermediate
+- models.haulpoint.marts
+18:23:02.261118 [info ]: Finished parsing [  0.06s]
+18:23:03.529966 [info ]: New version available 2.0.0-preview.200 (run `dbt system update`)
+18:23:03.557190 [info ]: suggestion: Run 'dbt deps' to see the latest fusion compatible packages. For compatibility errors, try the autofix script: https://github.com/dbt-labs/dbt-autofix
+18:23:03.557190 [info ]: 
+==================== Execution Summary =====================
+Finished 'run' with 1 warning and 6 errors for target 'dev' [1.6s]
