@@ -1,0 +1,12 @@
+# dbt build artifacts
+target/
+logs/
+dbt_packages/
+package-lock.yml
+
+# Python / virtual env (if any)
+venv/
+.env
+
+# OS junk
+.DS_Store
