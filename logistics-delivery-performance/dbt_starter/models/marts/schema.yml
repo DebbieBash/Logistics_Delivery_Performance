@@ -1,0 +1,59 @@
+version: 2
+
+models:
+  - name: fct_orders
+    description: "One row per order. Primary fact table for order-level SLA reporting."
+    columns:
+      - name: order_id
+        description: "Unique order identifier."
+        tests:
+          - unique
+          - not_null
+      - name: is_on_time
+        description: "True if delivered on or before promised_delivery_at in UTC."
+        tests:
+          - not_null
+      - name: is_sla_breached
+        description: "True if delivered after promised_delivery_at."
+        tests:
+          - not_null
+
+  - name: fct_deliveries
+    description: "One row per delivery event. Grain is delivery_id."
+    columns:
+      - name: delivery_id
+        description: "Unique delivery event identifier."
+        tests:
+          - unique
+          - not_null
+      - name: order_id
+        description: "Foreign key to fct_orders."
+        tests:
+          - not_null
+          - relationships:
+              to: ref('fct_orders')
+              field: order_id
+
+  - name: dim_warehouses
+    description: "One row per distribution centre."
+    columns:
+      - name: warehouse_id
+        description: "Unique warehouse identifier."
+        tests:
+          - unique
+          - not_null
+
+  - name: dim_drivers
+    description: "One row per driver employment record."
+    columns:
+      - name: driver_id
+        description: "Unique per employment record. Not unique per person — rehires get a new ID."
+        tests:
+          - unique
+          - not_null
+
+  - name: fct_sla_tracking
+    description: "Aggregated on-time rates by month, service level, region, warehouse, and carrier."
+
+  - name: reconciliation_bridge
+    description: "Explains the 88% vs 79% on-time rate spread across three policy stances."
