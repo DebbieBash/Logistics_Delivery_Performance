@@ -10,17 +10,31 @@ This project builds the data infrastructure to explain that gap. Every definitio
 
 What I built
 
-DeliverableStatusAssumptions & tradeoffs log✅ CompleteData generator (Snowflake sandbox)🔄 In progressdbt project (staging → intermediate → marts)🔄 In progressDelivery performance mart🔄 In progress88% vs 79% reconciliation model🔄 In progressData quality framework (≥10 tests)🔄 In progressOrchestration DAG design (Dagster)🔄 In progressArchitecture diagram + source-to-target map🔄 In progressPresentation deck🔄 In progress
+DeliverableStatusAssumptions & tradeoffs log✅ Complete
+Data generator (Snowflake sandbox)✅ Complete
+dbt project (staging → intermediate → marts)✅ Complete
+Delivery performance mart✅ Complete
+88% vs 79% reconciliation model✅ Complete
+Data quality framework (15 tests, 3 business-rule)✅ Complete
+Orchestration DAG design (Dagster)✅ Complete
+Architecture diagram✅ Complete
+
+The numbers
+
+RateValuePolicyYour rate (fail stance)73.44%Null timestamps = late, everything in denominatorOperations rate88.79%Null timestamps excluded from denominatorCX rate77.27%Failed attempts excluded, nulls counted as late
+
+The 15.35 percentage point gap between Operations and your rate is entirely explained by null timestamp handling — a policy choice, not a data quality defect. The reconciliation bridge walks from one number to the other line by line.
 
 
 Stack
 
 
 Warehouse: Snowflake
-Transformation: dbt Core
-Orchestration: Dagster
+Transformation: dbt Core 1.10
+Orchestration: Dagster (design)
 Language: Python, SQL
-Source data: Seed-deterministic generator provisioning 4 raw tables (~50k orders)
+Testing: dbt tests + 3 custom business-rule tests
+Source data: Seed-deterministic generator, 50k orders, 50,971 deliveries
 
 
 
@@ -46,23 +60,37 @@ Per DRIVER_ID (employment record), not DRIVER_NAME. A data quality test flags ca
 Full log with rationale and risk for each decision: ASSUMPTIONS.md
 
 
-Project structure
+Model structure
 
-07-logistics-delivery-performance/
-├── BRIEF.md
-├── RUBRIC.md
-├── ASSUMPTIONS.md
-├── data_generator/
-│   ├── generate_data.py
-│   ├── requirements.txt
-│   └── README.md
-└── dbt_starter/
-    ├── dbt_project.yml
-    ├── models/
-    │   ├── staging/
-    │   ├── intermediate/
-    │   └── marts/
-    └── tests/
+dbt_starter/
+├── models/
+│   ├── staging/
+│   │   ├── stg_orders.sql
+│   │   ├── stg_deliveries.sql
+│   │   ├── stg_warehouses.sql
+│   │   └── stg_drivers.sql
+│   ├── intermediate/
+│   │   ├── int_orders.sql
+│   │   ├── int_deliveries.sql
+│   │   └── int_order_delivery.sql
+│   └── marts/
+│       ├── fct_orders.sql
+│       ├── fct_deliveries.sql
+│       ├── fct_sla_tracking.sql
+│       ├── reconciliation_bridge.sql
+│       ├── dim_warehouses.sql
+│       ├── dim_drivers.sql
+│       └── schema.yml
+├── tests/
+│   ├── assert_sla_counts_tie_out.sql
+│   ├── assert_delivery_not_before_order.sql
+│   └── assert_potential_rehires_flagged.sql
+└── dbt_project.yml
+
+
+Data quality tests
+
+TestTypeSeverityorder_id unique + not nullGenericErrordelivery_id unique + not nullGenericErrorwarehouse_id unique + not nullGenericErrordriver_id unique + not nullGenericErroris_on_time not nullGenericErroris_sla_breached not nullGenericErrororder_id referential integrityGenericErrorassert_sla_counts_tie_outBusiness ruleErrorassert_delivery_not_before_orderBusiness ruleErrorassert_potential_rehires_flaggedBusiness ruleWarn
 
 
 How to run
@@ -71,20 +99,28 @@ bash# 1. Set Snowflake credentials
 export SNOWFLAKE_ACCOUNT=your-account
 export SNOWFLAKE_USER=your-user
 export SNOWFLAKE_PASSWORD=your-password
-export SNOWFLAKE_ROLE=SYSADMIN
+export SNOWFLAKE_ROLE=ACCOUNTADMIN
 export SNOWFLAKE_WAREHOUSE=COMPUTE_WH
 export SNOWFLAKE_DATABASE=HAULPOINT
 export SNOWFLAKE_SCHEMA=RAW
 
 # 2. Validate without loading
-python generate_data.py --dry-run
+cd data_generator
+python3 generate_data.py --dry-run
 
 # 3. Provision raw tables
-python generate_data.py
+python3 generate_data.py
 
 # 4. Run dbt
+cd ../dbt_starter
+dbt deps
 dbt build
-dbt docs generate && dbt docs serve
+
+# 5. Run tests
+dbt test
 
 
 
+ASSUMPTIONS.md — all five definitional positions with rationale and risk
+ORCHESTRATION.md — Dagster DAG design, schedule, freshness checks, failure behaviour
+architecture.svg — full pipeline lineage diagram
